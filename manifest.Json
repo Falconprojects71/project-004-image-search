@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Project 004 Image Search",
+  "version": "0.1.0",
+  "description": "A clean and simple image viewing experience.",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/search*",
+        "https://www.google.co.uk/search*",
+        "https://www.google.ca/search*",
+        "https://www.google.com.pk/search*"
+      ],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
+}
