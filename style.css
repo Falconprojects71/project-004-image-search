@@ -1,0 +1,50 @@
+#project004-preview {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+  font-family: Arial, sans-serif;
+}
+
+#project004-preview.active {
+  display: flex;
+}
+
+#project004-image {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.project004-button {
+  position: fixed;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#project004-close {
+  top: 20px;
+  right: 20px;
+}
+
+#project004-prev {
+  left: 20px;
+  top: 50%;
+}
+
+#project004-next {
+  right: 20px;
+  top: 50%;
+}
+
+#project004-original {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
