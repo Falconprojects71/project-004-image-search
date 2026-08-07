@@ -1,3 +1,6 @@
+if (window.project004Loaded) return;
+window.project004Loaded = true;
+
 (() => {
   let images = [];
   let currentIndex = 0;
