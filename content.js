@@ -45,6 +45,9 @@
     const index = images.indexOf(clickedImage);
 
     if (index !== -1) {
+  originalUrl =
+  clickedImage.closest("a")?.href || 
+  clickedImage.src;
       showImage(index);
       overlay.classList.add("active");
     }
@@ -71,11 +74,13 @@
     });
 
   document
-    .getElementById("project004-original")
-    .addEventListener("click", event => {
-      event.stopPropagation();
-      overlay.classList.remove("active");
-    });
+  .getElementById("project004-original")
+  .addEventListener("click", event => {
+    event.stopPropagation();
 
+    if (originalUrl) {
+      window.open(originalUrl, "_blank");
+    }
+  });
   console.log("Project 004 image viewer loaded");
 })();
