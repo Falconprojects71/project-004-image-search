@@ -1,15 +1,15 @@
 (() => {
+  let images = [];
+  let currentIndex = 0;
+
   const overlay = document.createElement("div");
   overlay.id = "project004-preview";
 
   overlay.innerHTML = `
     <button id="project004-close" class="project004-button">✕</button>
-
     <button id="project004-prev" class="project004-button">←</button>
 
-    <div style="color:white;font-size:24px;">
-      Project 004 Preview Test
-    </div>
+    <img id="project004-image" />
 
     <button id="project004-next" class="project004-button">→</button>
 
@@ -20,22 +20,33 @@
 
   document.body.appendChild(overlay);
 
-  const testButton = document.createElement("button");
-  testButton.textContent = "🖼️ Project 004 Test";
-  testButton.style.position = "fixed";
-  testButton.style.bottom = "20px";
-  testButton.style.right = "20px";
-  testButton.style.zIndex = "999998";
-  testButton.style.padding = "12px";
-  testButton.style.borderRadius = "8px";
-  testButton.style.border = "1px solid #333";
-  testButton.style.background = "white";
-  testButton.style.color = "black";
+  const image = overlay.querySelector("#project004-image");
 
-  document.body.appendChild(testButton);
+  function collectImages() {
+    images = [...document.querySelectorAll("img")]
+      .filter(img => img.src && img.width > 100 && img.height > 100);
+  }
 
-  testButton.addEventListener("click", () => {
-    overlay.classList.add("active");
+  function showImage(index) {
+    if (!images.length) return;
+
+    currentIndex = (index + images.length) % images.length;
+    image.src = images[currentIndex].src;
+  }
+
+  document.addEventListener("click", event => {
+    const clickedImage = event.target.closest("img");
+
+    if (!clickedImage) return;
+
+    collectImages();
+
+    const index = images.indexOf(clickedImage);
+
+    if (index !== -1) {
+      showImage(index);
+      overlay.classList.add("active");
+    }
   });
 
   document
@@ -44,5 +55,23 @@
       overlay.classList.remove("active");
     });
 
-  console.log("Project 004 test system loaded");
+  document
+    .getElementById("project004-prev")
+    .addEventListener("click", () => {
+      showImage(currentIndex - 1);
+    });
+
+  document
+    .getElementById("project004-next")
+    .addEventListener("click", () => {
+      showImage(currentIndex + 1);
+    });
+
+  document
+    .getElementById("project004-original")
+    .addEventListener("click", () => {
+      overlay.classList.remove("active");
+    });
+
+  console.log("Project 004 image viewer loaded");
 })();
