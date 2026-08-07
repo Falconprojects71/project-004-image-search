@@ -34,21 +34,9 @@
     image.src = images[currentIndex].src;
   }
 
-  document.addEventListener("click", event => {
-    const clickedImage = event.target.closest("img");
-
-    if (!clickedImage) return;
-
-    collectImages();
-
-    const index = images.indexOf(clickedImage);
-
-    if (index !== -1) {
-      showImage(index);
-      overlay.classList.add("active");
-    }
-  });
-
+document.addEventListener("click", event => {
+  if (!event.target.closest("img")) return;
+});
   document
     .getElementById("project004-close")
     .addEventListener("click", () => {
