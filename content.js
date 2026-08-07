@@ -34,9 +34,22 @@
     image.src = images[currentIndex].src;
   }
 
-document.addEventListener("click", event => {
-  if (!event.target.closest("img")) return;
-});
+  document.addEventListener("click", event => {
+    const clickedImage = event.target.closest("img");
+
+    if (!clickedImage) return;
+    if (overlay.contains(clickedImage)) return;
+
+    collectImages();
+
+    const index = images.indexOf(clickedImage);
+
+    if (index !== -1) {
+      showImage(index);
+      overlay.classList.add("active");
+    }
+  });
+
   document
     .getElementById("project004-close")
     .addEventListener("click", () => {
@@ -45,19 +58,22 @@ document.addEventListener("click", event => {
 
   document
     .getElementById("project004-prev")
-    .addEventListener("click", () => {
+    .addEventListener("click", event => {
+      event.stopPropagation();
       showImage(currentIndex - 1);
     });
 
   document
     .getElementById("project004-next")
-    .addEventListener("click", () => {
+    .addEventListener("click", event => {
+      event.stopPropagation();
       showImage(currentIndex + 1);
     });
 
   document
     .getElementById("project004-original")
-    .addEventListener("click", () => {
+    .addEventListener("click", event => {
+      event.stopPropagation();
       overlay.classList.remove("active");
     });
 
