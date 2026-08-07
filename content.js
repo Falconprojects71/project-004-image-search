@@ -73,13 +73,36 @@
       showImage(currentIndex + 1);
     });
 
-  document
-  .getElementById("project004-original")
-  .addEventListener("click", event => {
+    document
+    .getElementById("project004-original")
+    .addEventListener("click", event => {
+      event.stopPropagation();
+
+      if (originalUrl) {
+        window.open(originalUrl, "_blank");
+      }
+    });
+
+  image.addEventListener("dblclick", event => {
     event.stopPropagation();
 
     if (originalUrl) {
       window.open(originalUrl, "_blank");
+    }
+  });
+  document.addEventListener("keydown", event => {
+    if (!overlay.classList.contains("active")) return;
+
+    if (event.key === "ArrowLeft") {
+      showImage(currentIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      showImage(currentIndex + 1);
+    }
+
+    if (event.key === "Escape") {
+      overlay.classList.remove("active");
     }
   });
   console.log("Project 004 image viewer loaded");
