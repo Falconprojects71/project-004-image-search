@@ -50,6 +50,7 @@
   clickedImage.src;
       showImage(index);
       overlay.classList.add("active");
+      overlay.focus();
     }
   });
 
@@ -90,20 +91,25 @@
       window.open(originalUrl, "_blank");
     }
   });
-  document.addEventListener("keydown", event => {
-    if (!overlay.classList.contains("active")) return;
+  overlay.tabIndex = 0;
 
-    if (event.key === "ArrowLeft") {
-      showImage(currentIndex - 1);
-    }
+overlay.addEventListener("keydown", event => {
+  if (!overlay.classList.contains("active")) return;
 
-    if (event.key === "ArrowRight") {
-      showImage(currentIndex + 1);
-    }
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    showImage(currentIndex - 1);
+  }
 
-    if (event.key === "Escape") {
-      overlay.classList.remove("active");
-    }
-  });
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    showImage(currentIndex + 1);
+  }
+
+  if (event.key === "Escape") {
+    event.preventDefault();
+    overlay.classList.remove("active");
+  }
+});
   console.log("Project 004 image viewer loaded");
 })();
