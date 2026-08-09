@@ -80,16 +80,18 @@
       event.stopPropagation();
 
       if (originalUrl) {
-        window.open(originalUrl, "_blank");
-      }
+  overlay.classList.remove("active");
+  window.open(originalUrl, "_blank");
+}
     });
 
   image.addEventListener("dblclick", event => {
     event.stopPropagation();
 
     if (originalUrl) {
-      window.open(originalUrl, "_blank");
-    }
+  overlay.classList.remove("active");
+  window.open(originalUrl, "_blank");
+}
   });
   overlay.tabIndex = 0;
 
