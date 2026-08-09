@@ -1,6 +1,7 @@
 (() => {
   let images = [];
   let currentIndex = 0;
+  let originalUrl = "";
 
   const overlay = document.createElement("div");
   overlay.id = "project004-preview";
