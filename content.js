@@ -25,12 +25,7 @@
 
   function collectImages() {
   images = [...document.querySelectorAll("img")]
-    .filter(img =>
-      img.src &&
-      img.complete &&
-      img.naturalWidth > 200 &&
-      img.naturalHeight > 200
-    );
+    .filter(img => img.src && img.width > 100 && img.height > 100);
 }
 
   function showImage(index) {
