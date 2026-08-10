@@ -24,9 +24,14 @@
   const image = overlay.querySelector("#project004-image");
 
   function collectImages() {
-    images = [...document.querySelectorAll("img")]
-      .filter(img => img.src && img.width > 100 && img.height > 100);
-  }
+  images = [...document.querySelectorAll("img")]
+    .filter(img =>
+      img.src &&
+      img.complete &&
+      img.naturalWidth > 200 &&
+      img.naturalHeight > 200
+    );
+}
 
   function showImage(index) {
     if (!images.length) return;
