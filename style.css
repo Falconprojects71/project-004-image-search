@@ -26,6 +26,13 @@
   padding: 12px 18px;
   font-size: 16px;
   cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.project004-button:hover {
+  opacity: 1;
+  transform: scale(1.08);
 }
 
 #project004-close {
@@ -47,4 +54,7 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+}
+#project004-original:hover {
+  transform: translateX(-50%) scale(1.08);
 }
